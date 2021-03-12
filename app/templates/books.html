@@ -1,0 +1,31 @@
+{% extends 'base_template.html' %}
+
+{% block title %}
+	Books
+{% endblock %}
+
+
+
+{% block content_title %}
+
+    {% include 'search_field.html' %}
+
+	<h1>Книги:</h1>
+{% endblock %}
+
+{% block content %}
+
+    {% if books %}
+            <ol class="rounded">
+            {% for book in books %}
+                <li><a href="{{url_for('book_detail', id=book.id)}}">{{ book.name }}<br>{{book.author.name}}<br>{{book.date_published.date()}}</a></li>
+            {% endfor %}
+            </ol>
+    {% else %}
+        <h3>Список книг пустий. Але ви можете добавити нові книги в <a href="{{url_for('admin.index')}}">адмін-панелі</a></h3>
+
+	{% endif %}
+
+
+
+{% endblock %}

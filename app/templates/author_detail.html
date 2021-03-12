@@ -1,0 +1,25 @@
+{% extends 'base_template.html' %}
+
+{% block title %}
+	{{ author.name }}
+{% endblock %}
+
+{% block content_title %}
+	<h1>{{ author.name }}</h1>
+{% endblock %}
+
+{% block content %}
+
+    <h2>ID = {{ author.id }}</h2>
+    <h2>Date of birth : {{ author.date_of_birth }}</h2>
+    {% if  author.books %}
+    <h2>Books</h2>
+    <ul>
+        {% for book in author.books %}
+                <li><h3><a href="{{url_for('book_detail', id=book.id)}}">{{ book.name }}</a></h3></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+{% endblock %}

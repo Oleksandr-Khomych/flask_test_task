@@ -1,0 +1,28 @@
+{% extends 'base_template.html' %}
+
+{% block title %}
+	Authors
+{% endblock %}
+
+{% block content_title %}
+
+{% include 'search_field.html' %}
+
+	<h1>Книги:</h1>
+{% endblock %}
+
+{% block content %}
+
+    {% if authors %}
+            <ol class="rounded">
+            {% for author in authors %}
+                <li><a href="{{url_for('author_detail', id=author.id)}}">{{ author.name }}</a></li>
+            {% endfor %}
+            </ol>
+    {% else %}
+        <h3>Список авторів пустий. Але ви можете добавити нових в <a href="{{url_for('admin.index')}}">адмін-панелі</a></h3>
+
+	{% endif %}
+
+
+{% endblock %}

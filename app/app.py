@@ -43,15 +43,13 @@ class HomeAdminView(AdminMixin, AdminIndexView):
     pass
 
 
-admin = Admin(app, 'App', url='/', index_view=HomeAdminView())
-# , name='FlaskApp', url='/', index_view=HomeAdminView(User, db.session)
+admin = Admin(app, 'AdminMenu', url='/admin/', index_view=HomeAdminView())
 
 admin.add_view(AdminView(Author, db.session))
 admin.add_view(AdminView(Book, db.session))
 
 
 # flask_security
-
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 
 security = Security(app, user_datastore)

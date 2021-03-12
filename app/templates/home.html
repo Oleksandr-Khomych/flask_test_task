@@ -5,23 +5,9 @@
 {% endblock %}
 
 {% block content_title %}
-	<h1>Home page: Test task</h1>
+<br><br>
+<h1>Home page: Test task</h1>
 {% endblock %}
 
-{% block content %}
-	{% if authors %}
-	<h2>Список авторів</h2>
-	{% endif %}
-	{% for author in authors %}
-	<a href="{{url_for('author_detail', id=author.id)}}"><h4>{{ author.id }}| {{ author.name }} {{ author.date_of_birth }}</h4></a>
-	{% endfor %}
-
-	{% if books %}
-	<h2>Список книг</h2>
-	{% endif %}
-	{% for book in books %}
-		<a href="{{url_for('book_detail', id=book.id)}}"><h4>{{ book.id }}| {{ book.name }} <br>author_id={{ book.author_id }} <br>date_published={{book.date_published}}</h4></a><br>
-	{% endfor %}
-
-	<a href="/create_author"><h2>Створити автора</h2></a>
+{% block content_next %}
 {% endblock %}

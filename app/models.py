@@ -8,7 +8,7 @@ class Author(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     date_of_birth = db.Column(db.Date, nullable=False)
-    books = db.relationship('Book', backref='author')   # , cascade='all,delete'
+    books = db.relationship('Book', backref='author')
 
     def __repr__(self):
         return f'<Author({self.id}, {self.name}, {self.books})>'

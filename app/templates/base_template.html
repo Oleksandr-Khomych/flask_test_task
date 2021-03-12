@@ -6,11 +6,32 @@
       {% block title %}
 
       {% endblock %} | Flask app
-
     </title>
-    <!-- CSS only -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='search_field.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='list.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='dropdown_menu.css') }}">
+
 </head>
 <body>
+
+<div>
+    <ul class="menu-main">
+  <li><a href="{{ url_for('home') }}">Home</a></li>
+  <li><a href="{{ url_for('authors') }}">Authors</a></li>
+  <li><a href="{{ url_for('books') }}">Books</a></li>
+  <li><a href="{{ url_for('admin.index') }}">Adminka</a></li>
+{% if current_user.is_authenticated %}
+  <li><a href="{{ url_for('security.logout') }}">Logout({{ current_user.email }})</a></li>
+{%else%}
+  <li><a href="{{ url_for('security.login') }}">Login</a></li>
+{% endif %}
+    </ul>
+</div>
+
       <h1>
          {% block content_title %}
 
