@@ -1,7 +1,6 @@
 from app import app, db
 from flask import render_template, request, redirect, url_for
 from models import Book, Author
-from datetime import datetime
 
 from flask_security import login_required
 
@@ -13,7 +12,6 @@ def home():
 
 @app.route('/book/')
 def books():
-    print(request.url_rule)
     q = request.args.get('q')
     if q:
         book_list = Book.query.filter(Book.name.contains(q)).all()
