@@ -1,0 +1,29 @@
+{% extends 'base_template.html' %}
+
+{% block title %}
+	Posts
+{% endblock %}
+
+{% block content_title %}
+	<h1>Створити автора:</h1>
+{% endblock %}
+
+{% block content %}
+
+    {% for message in get_flashed_messages()%}
+        <div class='flash'>{{message}}</div>
+    {% endfor %}
+
+    <form action="{{ url_for('create_author') }}" method="post" class="create_post">
+        <label>Ім'я</label>
+        <br>
+        <input type="text" name="name" value="" required/>
+        <br>
+        <label>Дата народження</label>
+        <br>
+        <input type="date" name="date_of_birth" required>
+
+        <p><input type="submit" value="Create"></p>
+    </form>
+
+{% endblock %}
