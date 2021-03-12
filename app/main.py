@@ -1,4 +1,4 @@
-from app import app, db
+from app import db, app
 import views
 #
 from models import Author, Book
